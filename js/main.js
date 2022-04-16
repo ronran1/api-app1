@@ -2,13 +2,17 @@
 document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch(){
+  const interval = null
+  if (interval) {
+    clearInterval(interval)
+  }
   const choice = document.querySelector('input').value
   document.querySelector('h2').innerText = `Loading ${choice} price, wait 10 seconds...`
   setTimeout(() => document.querySelector('h2').innerText = `Did you know that ${choice} price will self-update every 10 seconds?`
   , 5000)
   console.log(choice)
   const url = `https://api.coincap.io/v2/assets/${choice}`
-  setInterval(() => {
+  interval = setInterval(() => {
   fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -19,5 +23,6 @@ function getFetch(){
     .catch(err => {
         console.log(`error ${err}`)
     })}, 10000)
+    interval
 }
 
