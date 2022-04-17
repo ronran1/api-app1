@@ -18,6 +18,7 @@ function getFetch(){
     .then(data => {
       console.log(data)
       document.querySelector('h2').innerText = `Price of ${data.data.name}: ${Number(data.data.priceUsd).toFixed(2)}`
+      document.querySelector('h3').innerText = `VWAP of ${data.data.name}: ${Number(data.data.vwap24Hr).toFixed(2)}`
 
     })
     .catch(err => {
