@@ -51,6 +51,5 @@ function getFetch(){
     .catch(err => {
         console.log(`error ${err}`)
     })}, 10000)
-    allStorage()
 }
 
